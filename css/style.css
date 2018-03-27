@@ -1,0 +1,105 @@
+body {
+  background-image: radial-gradient(circle, white, #BFBFFF);
+  font-family: 'Share Tech Mono', monospace; }
+
+.container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  padding: 3.5rem 1.1rem;
+  background-image: linear-gradient(to right, #DDDDDD, grey);
+  margin: 30px auto;
+  border-radius: 50px;
+  display: grid;
+  grid-row-gap: 5px;
+  grid-column-gap: 5px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-areas: "screen screen screen screen" "screen screen screen screen" "ac pm prc div" "sev eig nin x" "fou fiv six min" "one two thr plus" "zer zer dot eq"; }
+  .container > * {
+    color: white;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 4px black; }
+
+.logo {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: none;
+  padding: .2rem 1rem;
+  border-radius: 100px;
+  background-image: linear-gradient(to top, #003F1F, #006633); }
+
+.button {
+  background-image: linear-gradient(to top, grey, black);
+  cursor: pointer; }
+  .button--ac {
+    grid-area: ac; }
+  .button--pm {
+    grid-area: pm; }
+  .button--prc {
+    grid-area: prc; }
+  .button--div {
+    grid-area: div;
+    background-image: linear-gradient(to top, orange, black); }
+  .button--0 {
+    grid-area: zer; }
+  .button--1 {
+    grid-area: one; }
+  .button--2 {
+    grid-area: two; }
+  .button--3 {
+    grid-area: thr; }
+  .button--4 {
+    grid-area: fou; }
+  .button--5 {
+    grid-area: fiv; }
+  .button--6 {
+    grid-area: six; }
+  .button--7 {
+    grid-area: sev; }
+  .button--8 {
+    grid-area: eig; }
+  .button--9 {
+    grid-area: nin; }
+  .button--x {
+    grid-area: x;
+    background-image: linear-gradient(to top, orange, black); }
+  .button--min {
+    grid-area: min;
+    background-image: linear-gradient(to top, orange, black); }
+  .button--plus {
+    grid-area: plus;
+    background-image: linear-gradient(to top, orange, black); }
+  .button--eq {
+    grid-area: eq;
+    background-image: linear-gradient(to top, orange, black); }
+  .button--dot {
+    grid-area: dot; }
+
+.button:hover {
+  box-shadow: 0 1px 1px black; }
+
+.screen {
+  grid-area: screen;
+  border-radius: 10px;
+  border: none;
+  background-color: #BFBFBF;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 4rem; }
+
+/*
+  .button--1,
+  .button--2,
+  .button--3,
+  .button--4{
+    display: none;
+  }
+  
+  */
