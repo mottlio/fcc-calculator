@@ -56,12 +56,16 @@ body{
     cursor: pointer;
     &--ac{
       grid-area: ac;
+      background-image: linear-gradient(to top, red, black);
+      box-shadow: 6px 6px 5px white;
     }
     &--pm{
       grid-area: pm;
+      background-image: linear-gradient(to top, lightgrey, black);
     }
     &--prc{
       grid-area: prc;
+      background-image: linear-gradient(to top, lightgrey, black);
     }
     &--div{
       grid-area: div;

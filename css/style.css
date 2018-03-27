@@ -38,11 +38,15 @@ body {
   background-image: linear-gradient(to top, grey, black);
   cursor: pointer; }
   .button--ac {
-    grid-area: ac; }
+    grid-area: ac;
+    background-image: linear-gradient(to top, red, black);
+    box-shadow: 6px 6px 5px white; }
   .button--pm {
-    grid-area: pm; }
+    grid-area: pm;
+    background-image: linear-gradient(to top, lightgrey, black); }
   .button--prc {
-    grid-area: prc; }
+    grid-area: prc;
+    background-image: linear-gradient(to top, lightgrey, black); }
   .button--div {
     grid-area: div;
     background-image: linear-gradient(to top, orange, black); }
