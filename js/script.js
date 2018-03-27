@@ -12,8 +12,15 @@ var oper = 0;
         console.log(val);
 
         if (val == "+/-"){
-            expr = expr*-1;
-            statement += "*(-1)";
+            var last = statement.substr(statement.length-1);
+            if ((statement.length == 0) || (["+", "-", "/", "*"].indexOf(last) > -1)) {
+                expr = "-";
+                statement += "(-1)*";
+            } else {
+                expr = expr*-1;
+                statement += "*(-1)";
+            }
+            
         } else if(val == "%"){
             expr = expr/100;
             statement += "/100";
@@ -35,8 +42,8 @@ var oper = 0;
 
         if (oper == 0) {        
             var val = $(this).html();
-            $(".oper").css("box-shadow", "none");
-            $(this).css("box-shadow", "6px 6px 5px white");
+         //   $(".oper").css("box-shadow", "none");
+          //  $(this).css("box-shadow", "6px 6px 5px white");
             console.log(val);
             console.log(oper);
             statement += val;
@@ -50,14 +57,22 @@ var oper = 0;
             console.log(last);
             
             if (["+", "-", "/", "*"].indexOf(last) > -1) {
-                
                 console.log("ALERT!");
+                statement = statement.substring(0, statement.length - 1);
+                expr = math.eval(statement).toString();
+                $(".screen").html(expr);
+                var val = $(this).html();
+                statement = expr + val;
+                console.log(statement);
+                expr = "";
+                oper = 1;
+
 
             } else {
                 expr = math.eval(statement).toString();
                 $(".screen").html(expr);
-                $(".oper").css("box-shadow", "none");
-                $(this).css("box-shadow", "6px 6px 5px white");
+               // $(".oper").css("box-shadow", "none");
+               // $(this).css("box-shadow", "6px 6px 5px white");
                 var val = $(this).html();
                 console.log(val);
                 console.log(oper);

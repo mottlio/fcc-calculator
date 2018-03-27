@@ -35,12 +35,13 @@ body {
   background-image: linear-gradient(to top, #003F1F, #006633); }
 
 .button {
+  font-size: 1.5rem;
   background-image: linear-gradient(to top, grey, black);
   cursor: pointer; }
   .button--ac {
     grid-area: ac;
     background-image: linear-gradient(to top, red, black);
-    box-shadow: 6px 6px 5px white; }
+    outline: #BFBFBF; }
   .button--pm {
     grid-area: pm;
     background-image: linear-gradient(to top, lightgrey, black); }
