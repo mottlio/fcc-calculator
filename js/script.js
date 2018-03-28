@@ -9,13 +9,17 @@ var oper = 0;
     
     $(".num").click(function(){
         var val = $(this).html();
-        console.log(val);
 
         if (val == "+/-"){
             var last = statement.substr(statement.length-1);
-            if ((statement.length == 0) || (["+", "-", "/", "*"].indexOf(last) > -1)) {
+            if ((statement.length == 0) || (["+", "-", "*"].indexOf(last) > -1)) {
                 expr = "-";
                 statement += "(-1)*";
+            } else if (last == "/") {
+                expr = "-";
+                statement = statement.substring(0, statement.length - 1);
+                statement += "*(-1)/";
+                console.log(statement);
             } else {
                 expr = expr*-1;
                 statement += "*(-1)";
@@ -40,24 +44,19 @@ var oper = 0;
 
     $(".oper").click(function(){
 
+
+        
         if (oper == 0) {        
             var val = $(this).html();
-         //   $(".oper").css("box-shadow", "none");
-          //  $(this).css("box-shadow", "6px 6px 5px white");
-            console.log(val);
-            console.log(oper);
             statement += val;
             oper += 1;
             console.log(statement);
-            console.log(statement.substr(statement.length-1));
             $(".screen").html(expr);
             expr = "";
         } else {
             var last = statement.substr(statement.length-1);
-            console.log(last);
             
             if (["+", "-", "/", "*"].indexOf(last) > -1) {
-                console.log("ALERT!");
                 statement = statement.substring(0, statement.length - 1);
                 expr = math.eval(statement).toString();
                 $(".screen").html(expr);
@@ -71,23 +70,13 @@ var oper = 0;
             } else {
                 expr = math.eval(statement).toString();
                 $(".screen").html(expr);
-               // $(".oper").css("box-shadow", "none");
-               // $(this).css("box-shadow", "6px 6px 5px white");
                 var val = $(this).html();
-                console.log(val);
-                console.log(oper);
-                console.log(statement.substr(statement.length-1));
                 statement = expr + val;
                 expr = "";
                 oper = 1;
             }
             
-            
-            
         }
-        
-        
-        
         
     });
 
@@ -107,7 +96,6 @@ var oper = 0;
         statement = result.toString();
         expr = statement;
         console.log(result);
-        console.log(result.toString().length);
         $(".screen").html(result);
         if (result.toString().length > 9) {
             $(".screen").css("font-size", "2rem");
@@ -117,5 +105,4 @@ var oper = 0;
 
     });
     
-    // all custom jQuery will go here
 });
