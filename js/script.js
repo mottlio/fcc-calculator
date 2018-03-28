@@ -5,24 +5,29 @@ var expr = "";
 var oper = 0;
 var result = 0;
 
-
+$(".num").click(function(){
+ 
+    $(".button--ac").css("display", "none");
+    $(".button--ce").css("display", "flex");
+   
+})
     
     $(".num").click(function(){
         var val = $(this).html();
 
         if (val == "+/-"){
             var last = statement.substr(statement.length-1);
-            if ((statement.length == 0) || (["+", "-", "*"].indexOf(last) > -1)) {
+            if ((expr == 0 && statement.length == 0) || (["+", "-", "*"].indexOf(last) > -1)) {
                 expr = "-";
-                statement += "(-1)*";
+                //statement += "(-1)*";
             } else if (last == "/") {
                 expr = "-";
-                statement = statement.substring(0, statement.length - 1);
-                statement += "*(-1)/";
-                console.log(statement);
+                //statement = statement.substring(0, statement.length - 1);
+                //statement += "*(-1)/";
+                //console.log(statement);
             } else {
-                expr = expr*-1;
-                statement += "*(-1)";
+                expr = expr*(-1);
+                //statement += "*(-1)";
             }
             
         } else if(val == "%"){
@@ -34,27 +39,37 @@ var result = 0;
             if (result && statement == "" && expr == ""){
                 result = 0;
             }
-                statement += val;
+                //statement += val;
                 expr += val;
-                console.log(statement);
+                console.log(expr);
+                console.log(statement+expr);
             
         }
+        
+        
+        
         if (expr.length > 9){
             $(".screen").css("font-size", "2rem");
         } else {
             $(".screen").css("font-size", "4rem");
         }
+        
+        
         console.log(statement);
         $(".screen").html(expr);
     });
 
+    
+    
+    
+    
     $(".oper").click(function(){
         
         if ($(".screen").html() == 0){
             statement = "";
             expr = "";
         } else {
-
+            statement += expr;
             $(".button").css("border", "1px solid black");
             $(this).css("border", "3px solid white");
 
@@ -102,18 +117,20 @@ var result = 0;
                     
                     
                     } else {
-                        expr = math.eval(statement).toString();
+                        
+                        result = math.eval(statement).toString();
                     
-                        if (expr.toString().length > 9) {
+                        if (result.toString().length > 9) {
                             $(".screen").css("font-size", "2rem");
                         } else {
                             $(".screen").css("font-size", "4rem");
                         }
                     
-                        $(".screen").html(expr);
+                        $(".screen").html(result);
                         var val = $(this).html();
-                        statement = expr + val;
+                        statement = result + val;
                         expr = "";
+                        result = 0;
                         oper = 1;
                     }
 
@@ -123,6 +140,7 @@ var result = 0;
     });
 
     $(".button--ac").click(function(){
+        $(".button").css("border", "1px solid black");
         oper = 0;
         expr = "";
         statement = "";
@@ -132,9 +150,34 @@ var result = 0;
         $(".screen").html("0");
     });
 
+    $(".button--ce").click(function(){
+        $(".button--ac").css("display", "flex");
+        $(".button--ce").css("display", "none");
+        expr = "";
+        var last = statement.substr(statement.length-1);
+
+        if(last == "*"){
+            $(".button--x").css("border", "3px solid white");
+        }else if(last == "/"){
+            $(".button--div").css("border", "3px solid white");
+        }else if(last == "+"){
+            $(".button--plus").css("border", "3px solid white");
+        }else if(last == "-"){
+            $(".button--min").css("border", "3px solid white");
+        }else {
+            $(".button--ac").css("display", "flex");
+        }
+        
+        $(".screen").css("font-size", "4rem");
+        console.log("reset");
+        $(".screen").html("0");
+    });
+
 
     $(".button--eq").click(function(){
         $(".button").css("border", "1px solid black");
+        statement += expr;
+        console.log(statement);
         var last = statement.substr(statement.length-1);
             
             if (["+", "-", "/", "*"].indexOf(last) > -1) {
@@ -144,12 +187,13 @@ var result = 0;
                 //expr = math.eval(statement).toString();
             }
         
-        oper = 0;
+        
         result = math.eval(statement);
         //statement = result.toString();
         //expr = statement;
         expr = "";
         statement = "";
+        oper = 0;
         console.log(result);
         console.log(statement);
         $(".screen").html(result);

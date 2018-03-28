@@ -39,8 +39,13 @@ body {
   background-image: linear-gradient(to top, grey, black);
   cursor: pointer;
   border: 1px solid black;
-  transition: all .5s; }
+  transition: all .3s; }
   .button--ac {
+    grid-area: ac;
+    background-image: linear-gradient(to top, red, black);
+    outline: #BFBFBF; }
+  .button--ce {
+    display: none;
     grid-area: ac;
     background-image: linear-gradient(to top, red, black);
     outline: #BFBFBF; }
