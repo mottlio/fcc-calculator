@@ -10,8 +10,8 @@ body{
   
   .container{
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 450px;
     padding: 3.5rem 1.1rem;
     background-image: linear-gradient(to right, #DDDDDD, grey);
     margin: 30px auto;
@@ -55,6 +55,8 @@ body{
     font-size: 1.5rem;
     background-image: linear-gradient(to top, grey, black);
     cursor: pointer;
+    border: 1px solid black;
+    transition: all .5s;
 
     &--ac{
       grid-area: ac;
